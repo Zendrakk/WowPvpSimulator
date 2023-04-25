@@ -1,4 +1,4 @@
 export class Race {
-    raceId!: number;
-    name!: string;
+    raceId: number;
+    name: string;
 }

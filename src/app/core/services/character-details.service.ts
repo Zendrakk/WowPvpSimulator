@@ -11,8 +11,8 @@ import { Faction } from 'src/app/core/models/faction';
 export class CharacterDetailsService {
 
   private endpoint: string = 'api/characterdetails';
-  private characters!: Character[];
-  private selectedCharacter!: Character;
+  private characters: Character[];
+  private selectedCharacter: Character;
   private firstRun: number = 0;
 
   constructor() { }
@@ -32,6 +32,10 @@ export class CharacterDetailsService {
 
   public GetCharacter(): Character {
     return this.selectedCharacter;
+  }
+
+  public DeleteCharacter(id: number): void {
+    this.characters = this.characters.filter(c => c.id != id);
   }
 
   private charactersFromDB: Character[] = [

@@ -34,7 +34,7 @@
                 <td>{{ character.level }}</td>
                 <td>{{ character.race }}</td>
                 <td>{{ character.class }}</td>
-                <td><button>Delete</button></td>
+                <td><button (click)="DeleteCharacter(character.id)">Delete</button></td>
               </tr>
               <tr *ngIf="(!characters || characters.length == 0)">
                 <td colspan="5">{{ noCharsMsg }}</td>

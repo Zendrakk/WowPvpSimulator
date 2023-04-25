@@ -23,8 +23,8 @@ export class LandingComponent {
   public isAlliance: boolean = false;
   public isHorde: boolean = false;
 
-  public characters!: Character[];
-  public selectedCharacter!: Character;
+  public characters: Character[];
+  public selectedCharacter: Character = null;
   public faction = Faction;
 
 
@@ -51,6 +51,18 @@ export class LandingComponent {
       this.isHorde = true;
     }
     this.isLoaded = true;
+  }
+
+  public DeleteCharacter(id: number): void {
+    this.characterdetailsService.DeleteCharacter(id);
+    this.characters = this.characters.filter(ch => ch.id != id);
+    this.selectedCharacter = null;
+    this.isSuccess = true;
+    this.isFailed = false;
+    this.isAlliance = false;
+    this.isHorde = false;
+
+    setTimeout(() => {this.isSuccess = false}, 3000);
   }
 
   private Compare(a: Character, b: Character) {
