@@ -1,0 +1,31 @@
+table {
+    display: inline-block;
+    background-color: #EEE;
+  }
+  th {
+    font-weight: bold;
+  }
+  table, td {
+    border: 1px solid #999999;
+    border-collapse: collapse;
+    padding: 5px;
+    width: 500px;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    text-align: center;
+  }
+  tbody tr:hover {
+    color: #607D8B;
+    background-color: #DDD;
+  }
+  button {
+    padding: 3px 6px;
+  }
+  button.main-buttons {
+    width: 150px;
+    margin: 5px;
+  }
+  .characters tr.selected {
+    background-color: #CFD8DC;
+    color: white;
+  }

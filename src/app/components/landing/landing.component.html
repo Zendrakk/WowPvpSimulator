@@ -1,0 +1,64 @@
+<article>
+    <div *ngIf="isLoaded">
+        <!-- Page Description -->
+        <section>
+          <h1><p>{{ pageDescriptionMsg }}</p></h1>
+          <!-- <div><img src="assets/img/AllianceIcon.png"></div> -->
+        </section>
+    
+        <!-- Add Character Button -->
+        <div>
+          <button  
+            class="main-buttons">
+            {{ addCharacterButtonMsg }}
+          </button><br/>
+        </div>
+    
+        <!-- Table of Characters From Database -->
+        <div>
+          <table class="characters">
+            <thead>
+              <tr>
+                <th>Name</th>
+                <th>Level</th>
+                <th>Race</th>
+                <th>Class</th>
+                <th>Action</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr *ngFor="let character of characters"
+              [class.selected]="character === selectedCharacter"
+              (click)="onSelect(character)">
+                <td [ngStyle]="{'color': (character.faction === faction.alliance) ? 'blue' : 'red'}">{{ character.name | uppercase}}</td>
+                <td>{{ character.level }}</td>
+                <td>{{ character.race }}</td>
+                <td>{{ character.class }}</td>
+                <td><button>Delete</button></td>
+              </tr>
+              <tr *ngIf="(!characters || characters.length == 0)">
+                <td colspan="5">{{ noCharsMsg }}</td>
+              </tr>
+            </tbody>
+          </table><br/>
+        </div>
+
+        <div *ngIf="isAlliance">
+            <br/><img src="assets/img/AllianceIconSmall.png">
+        </div>
+        <div *ngIf="isHorde">
+            <br/><img src="assets/img/HordeIconSmall.png">
+        </div>
+    
+        <!-- Alerts -->
+        <div *ngIf="isSuccess" role="alert">
+          <p>{{ charDeletedMsg[0] }}</p>
+          <p>{{ charDeletedMsg[1] }}</p>
+        </div>
+        <div *ngIf="isFailed" role="alert">
+          <p>{{ charNotDeletedMsg[0] }}</p>
+          <p>{{ charNotDeletedMsg[1] }}</p>
+        </div>
+      </div>
+
+</article>
